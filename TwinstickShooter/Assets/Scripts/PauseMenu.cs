@@ -44,11 +44,20 @@ public class PauseMenu : MonoBehaviour
 
         GUILayout.BeginArea(new Rect(windowX, windowY, windowWidth, windowHeight));
 
+        GUILayout.BeginHorizontal();
+
         if (GUILayout.Button("Resume"))
         {
             // Resume the game.
             isPaused = false;
         }
+
+        if (GUILayout.Button("Restart"))
+        {
+            Application.LoadLevel(Application.loadedLevelName);
+        }
+
+        GUILayout.EndHorizontal();
 
         if (GUILayout.Button("Main Menu"))
         {
