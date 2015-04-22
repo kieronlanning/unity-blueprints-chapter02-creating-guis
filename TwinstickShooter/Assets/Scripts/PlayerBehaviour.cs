@@ -42,6 +42,15 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyUp("escape"))
+        {
+            // If false becomes true and vice/versa.
+            PauseMenu.isPaused = !PauseMenu.isPaused;
+        }
+
+        if (PauseMenu.isPaused)
+            return;
+
         // Roate player to face the mouse.
         Rotation();
 
