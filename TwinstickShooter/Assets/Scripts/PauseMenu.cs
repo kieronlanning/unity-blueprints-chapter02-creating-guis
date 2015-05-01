@@ -60,6 +60,21 @@ public class PauseMenu : MonoBehaviour
         var windowX = (Screen.width - windowWidth)/2;
         var windowY = (Screen.height - windowHeight)/2;
 
+        /* 
+            What's insane about this is the `windowHeight * 2` portion.
+        
+            So, the pause menu 'Back' button, for some reason get's cut off, so I figure I'll increase the height.
+
+            Baring in mind that windowHeight = 100...
+
+            If I _set_ windowHeight to 200, it does nothing.
+            If I multiply windowHeight by 2, so it equals TWO-HUNDRED then it works.
+
+            Big old #wtf going on there.
+
+            (Unity 5.0.1f1 Personal).
+        */
+        
         GUILayout.BeginArea(new Rect(windowX, windowY, windowWidth, windowHeight * 2));
     }
 
