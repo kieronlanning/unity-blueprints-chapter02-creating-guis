@@ -60,7 +60,7 @@ public class PauseMenu : MonoBehaviour
         var windowX = (Screen.width - windowWidth)/2;
         var windowY = (Screen.height - windowHeight)/2;
 
-        GUILayout.BeginArea(new Rect(windowX, windowY, windowWidth, windowHeight));
+        GUILayout.BeginArea(new Rect(windowX, windowY, windowWidth, windowHeight * 2));
     }
 
     void ShowOptionsMenu()
@@ -85,15 +85,22 @@ public class PauseMenu : MonoBehaviour
         GUILayout.BeginHorizontal();
 
         if (GUILayout.Button("Decrease"))
+        {
             QualitySettings.DecreaseLevel();
+        }
+
         if (GUILayout.Button("Increase"))
+        {
             QualitySettings.IncreaseLevel();
+        }
 
         GUILayout.EndHorizontal();
 
         if (GUILayout.Button("Back"))
+        {
             currentMenu = Menu.Pause;
-        
+        }
+
         GUILayout.EndVertical();
         GUILayout.EndArea();
     }
