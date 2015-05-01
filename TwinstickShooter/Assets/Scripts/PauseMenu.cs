@@ -8,7 +8,8 @@ public class PauseMenu : MonoBehaviour
     {
         None,
         Pause,
-        Options
+        Options,
+        Credits
     };
 
     static public bool isPaused;
@@ -49,6 +50,9 @@ public class PauseMenu : MonoBehaviour
             case Menu.Options:
                 ShowOptionsMenu();
                 break;
+            case Menu.Credits:
+                ShowCreditsScreen();
+                break;
             case Menu.Pause:
                 ShowPauseMenu();
                 break;
@@ -76,6 +80,25 @@ public class PauseMenu : MonoBehaviour
         */
         
         GUILayout.BeginArea(new Rect(windowX, windowY, windowWidth, windowHeight * 2));
+    }
+
+    void ShowCreditsScreen()
+    {
+        BuildWindow();
+
+        // Instead of the default blank background,
+        // we will use what the GUISkin uses for the box properties.
+        GUILayout.BeginVertical("box");
+
+        GUILayout.Label("By Kieron Lanning");
+        GUILayout.Label("From the Unity Developer Blueprints book");
+        GUILayout.Label("by Packt Publishing.");
+
+        if (GUILayout.Button("Back"))
+            currentMenu = Menu.Pause;
+
+        GUILayout.EndVertical();
+        GUILayout.EndArea();
     }
 
     void ShowOptionsMenu()
@@ -143,6 +166,11 @@ public class PauseMenu : MonoBehaviour
         if (GUILayout.Button("Options"))
         {
             currentMenu = Menu.Options;
+        }
+
+        if (GUILayout.Button("Credits"))
+        {
+            currentMenu = Menu.Credits;
         }
 
         GUILayout.BeginHorizontal();
