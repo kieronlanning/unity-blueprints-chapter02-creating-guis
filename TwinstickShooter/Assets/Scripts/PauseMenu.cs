@@ -120,6 +120,35 @@ public class PauseMenu : MonoBehaviour
 
         GUILayout.Label("Quality - " + qualityName);
 
+        GUILayout.Label("Spaceship Colour:");
+
+        var playerRenderer = GameObject.Find("playerShip").GetComponent<Renderer>();
+
+        GUILayout.BeginHorizontal();
+
+        GUILayout.Label("r:", new GUIStyle { fixedWidth = 10, normal = new GUIStyleState { textColor = Color.white } });
+        var r = GUILayout.HorizontalSlider(playerRenderer.material.color.r, 0.0f, 1.0f);
+
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+
+        GUILayout.Label("b:", new GUIStyle { fixedWidth = 10, normal = new GUIStyleState { textColor = Color.white} });
+
+        var b = GUILayout.HorizontalSlider(playerRenderer.material.color.g, 0.0f, 1.0f);
+
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+
+        GUILayout.Label("g:", new GUIStyle { fixedWidth = 10, normal = new GUIStyleState { textColor = Color.white } });
+
+        var g = GUILayout.HorizontalSlider(playerRenderer.material.color.b, 0.0f, 1.0f);
+
+        GUILayout.EndHorizontal();
+
+        playerRenderer.material.color = new Color(r, g, b);
+
         GUILayout.BeginHorizontal();
 
         if (GUILayout.Button("Decrease"))
