@@ -79,7 +79,7 @@ public class PauseMenu : MonoBehaviour
             (Unity 5.0.1f1 Personal).
         */
         
-        GUILayout.BeginArea(new Rect(windowX, windowY, windowWidth, windowHeight * 2));
+        GUILayout.BeginArea(new Rect(windowX, windowY, windowWidth, windowHeight * 3));
     }
 
     void ShowCreditsScreen()
@@ -113,6 +113,12 @@ public class PauseMenu : MonoBehaviour
         GUILayout.Label("Master Volume - (" + AudioListener.volume.ToString("f2") + ")");
 
         AudioListener.volume = GUILayout.HorizontalSlider(AudioListener.volume, 0.0f, 1.0f);
+
+        var backgroundVolume = GameObject.Find("Main Camera").GetComponent<AudioSource>();
+
+        GUILayout.Label("Music Volume - (" + backgroundVolume.volume.ToString("f2") + ")");
+
+        backgroundVolume.volume = GUILayout.HorizontalSlider(backgroundVolume.volume, 0.0f, 1.0f);
 
         // Display and add the ability to change graphics quality.
         var currentQualitySetting = QualitySettings.GetQualityLevel();
